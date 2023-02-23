@@ -1,0 +1,49 @@
+<h3>Events</h3>
+
+<h4>Filter options</h4>
+
+<%= search_form_for @ransack_search do |f| %>
+
+  <%= f.label :title %>
+  <%= f.search_field :title_i_cont %>
+
+  <br>
+  <br>
+
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date_gteq %>
+
+  <br>
+  <br>
+
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date_lteq %>
+
+  <br>
+  <br>
+  <%= f.label :web_source %>
+  <%= f.search_field :web_source_i_cont %>
+
+  <br>
+  <br>
+
+  <%= f.submit %>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Start Date</th>
+    <th>End date</th>
+    <th>Source</th>
+  </tr>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.title %></td>
+      <td><%= event.start_date %></td>
+      <td><%= event.end_date %></td>
+      <td><%= event.web_source %></td>
+    </tr>
+  <% end %>
+</table>
